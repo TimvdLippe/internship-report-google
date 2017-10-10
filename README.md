@@ -501,34 +501,34 @@ This was the very reason for the adoption of Chrome Headless in the tool to obta
 
 To solve this friction, these are three proposed enhancements:
 1. Integrate Polymer Core modules into the analyzer.
-  As part of the project, we integrated Polymer Core in a Node environment and run in conjunction with the analyzer.
-  Since Polymer Core is created under the assumption of the availability of browser (DOM) APIs, this required manual patching of the environment:
-  ```js
-  // Patch up the global scope to be able to import Polymer code
-  class MutationObserver {
-   observe() {
-   }
-   disconnect() {
-   }
-  }
+    As part of the project, we integrated Polymer Core in a Node environment and run in conjunction with the analyzer.
+    Since Polymer Core is created under the assumption of the availability of browser (DOM) APIs, this required manual patching of the environment:
+    ```js
+     // Patch up the global scope to be able to import Polymer code
+     class MutationObserver {
+      observe() {
+      }
+      disconnect() {
+      }
+     }
 
-  const dom = new JSDOM();
-  const window: any = dom.window;
-  Object.assign(global, {
-   window: global,
-   HTMLElement: window.HTMLElement,
-   Node: window.Node,
-   customElements: {define() {}},
-   JSCompiler_renameProperty: () => {},
-   document: window.document,
-   MutationObserver,
-   requestAnimationFrame: setTimeout,
-   cancelAnimationFrame: clearTimeout
-  });
-  ```
-  With Polymer 3 and the switch to ES Modules, factorizing Polymer Core to extract general logic from browser-touching code allows Polymer tooling including the Analyzer reuse Polymer Core implementation.
+     const dom = new JSDOM();
+     const window: any = dom.window;
+     Object.assign(global, {
+      window: global,
+      HTMLElement: window.HTMLElement,
+      Node: window.Node,
+      customElements: {define() {}},
+      JSCompiler_renameProperty: () => {},
+      document: window.document,
+      MutationObserver,
+      requestAnimationFrame: setTimeout,
+      cancelAnimationFrame: clearTimeout
+     });
+     ```
+    With Polymer 3 and the switch to ES Modules, factorizing Polymer Core to extract general logic from browser-touching code allows Polymer tooling including the Analyzer reuse Polymer Core implementation.
 
-  One aspect to this integration is the usage of ES Modules in a Node environment. A fortunate aspect is that Polymer tooling is written in TypeScript, which means that integrating ES Modules requires minimal changes to the TypesCript config.
+    One aspect to this integration is the usage of ES Modules in a Node environment. A fortunate aspect is that Polymer tooling is written in TypeScript, which means that integrating ES Modules requires minimal changes to the TypesCript config.
 
 1. Switch all DOM AST representations from [Dom5](https://github.com/Polymer/dom5) + [Parse5](https://github.com/inikulin/parse5) to [JSDom](https://github.com/tmpvar/jsdom).
 JSDom implements a large subset of all available DOM API’s and as such is mostly compatible with Polymer core code relying on the browser environment.
