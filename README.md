@@ -45,7 +45,9 @@ Templates can contain other custom elements, such as `<custom-header>`, as well 
 </template>
 ```
 
-<div style="text-align: center; width: 100%;">Figure 1: Example of a template definition used in a Polymer custom element</div>
+<div>
+Figure 1: Example of a template definition used in a Polymer custom element
+</div>
 
 ### Polymer element definition
 
@@ -79,7 +81,9 @@ A full example of a Polymer element definition with its corresponding template i
 </dom-module>
 ```
 
-<div style="text-align: center;">Figure 2: Example of a definition of a Polymer custom element</div>
+<div>
+Figure 2: Example of a definition of a Polymer custom element
+</div>
 
 A custom element definition (invoked via [`customElements.define(name, constructor, options)`](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry/define)) has two components: the name of the custom element and the class definition of its behavior.
 In the example, the name of the custom element is `my-blostpost`, which corresponds to the `id` of the `<dom-module>`.
@@ -104,7 +108,9 @@ Provided the usage as described in Figure [3](#fig-my-blogpost-simple-usage), th
 <my-blogpost title="Article with content" content="Interesting content here"><my-blogpost>
 ```
 
-<div style="text-align: center;">Figure 3: Example usage of the `<my-blogpost>` element.</div>
+<div style="text-align: center;">Figure 3: Example usage of the &lt;my-blogpost> element.</div>
+
+<br>
 
 The above figures show the interaction between the custom element definition, it's corresponding template and the various possibilities for instances of the custom element.
 What the figures do not show, is the machinery required to obtain a working custom element.
@@ -203,16 +209,22 @@ The transformation must thus be pure JavaScript which must run in both the brows
 
 A disadvantage to this approach is that there is no existing knowledge in the team and the feasibility of the integration is unknown.
 There might be unforeseen limitations that prevent a deep integration for the library and the build tools.
-
+
 ## Initial performance tests
 To answer the third question (evaluate the feasibility and usefulness of pre-building the effects and binding metadata in Polymer applications), several performance experiments were performed.
 
 ### Definition of timings
 In this document, the reported timings concern different stages of the file loading process as well as the property metadata parsing and computation time.
-The timeline below shows the different timings that are used in this document and their inner relation.
+The timeline in Figure [4](#fig-file-timings) shows the different timings that are used in this document and their inner relation.
 *Note: the sizes of the timings are not representative for real-world performance measurements.*
 
+<div id="fig-file-timings"></div>
+
 ![image](https://user-images.githubusercontent.com/5948271/31383384-25c8e43a-adbb-11e7-8ef5-f92b705259f2.png)
+
+<div>
+Figure 4: Timeline with relative position of timings used in this report
+</div>
 
 ### Types of pre-building
 There are multiple optimizations that can be performed on build time.
@@ -369,15 +381,15 @@ The modification process is implemented as follows:
 1. Read in all files.
 1. Analyze the files with polymer-analyzer
 1. Based on the analysis, obtain DFS traversal of HTML imports
-  1. All files that were in the stream but not in the traversal, yield back in the stream
+    1. All files that were in the stream but not in the traversal, yield back in the stream
 1. Launch Chrome Headless
 1. For all documents of the DFS traversal:
-  1. Execute all scripts in the document
-  1. For all defined elements in the document:
-    1. Define dom-module in the browser
-    1. Obtain metadata (bindings, property-effects) from browser
-    1. Write binding metadata in front of JS ASTNode of element
-  1. Serialize all AST’s in the document back into a file
+    1. Execute all scripts in the document
+        1. For all defined elements in the document:
+        1. Define dom-module in the browser
+        1. Obtain metadata (bindings, property-effects) from browser
+        1. Write binding metadata in front of JS ASTNode of element
+    1. Serialize all AST’s in the document back into a file
 1. Yield potentially modified content from the file back in the stream
 
 ## Chrome Headless
@@ -394,7 +406,7 @@ If the Polymer-analyzer would be used, the static analysis tool will very likely
 A downside to this approach is that the user code might be relying on external factors such as additional fetch requests, localStorage, etc…
 This makes the tool more dangerous than a static analysis approach, although during testing no obvious incompatibilities were determined.
 The tool can be improved by sandboxing various potentially dangerous API’s to prevent unwanted side-effects.
-
+
 ## Results
 Based on the initial results of the performance tests, there was a measurable improvement in pre-building the metadata by skipping costly DOM-traversal.
 However, the initial results lacked definitive proof of end-to-end performance tests, as the approach was not scalable to multiple projects.
@@ -420,7 +432,7 @@ We discovered this caveat late in the process and there was not enough time to i
 Section “Further possible improvements” lists all extra opportunities.
 
 The final build that was tested thus exclude property effects and only pre-built bindings. Based on the extra network time and binding metadata, a net benefit of 5ms on desktop and 28ms on mobile was determined. This is roughly 1-3% of the full pageload.
-
+
 # Conclusion
 Pre-building binding metadata is a performance benefit for loading websites, albeit marginal.
 Depending on the usecase of the website (available bandwidth, CPU speed, mobile vs desktop), pre-buildling binding metadata is advisable.
