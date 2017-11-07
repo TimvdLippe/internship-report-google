@@ -1,19 +1,87 @@
 # Internship report Tim van der Lippe
 
-In the summer of 2017, I did an internship at the Polymer team in the San Francisco office of Google.
+In the summer of 2017, I did an internship at the [Polymer](https://www.polymer-project.org/) team in the San Francisco office of Google.
 This internship included training by top engineers about the inner-workings of Google as a company, how to use the tooling for the daily developer workflow as well as a real-world project.
 The real-world project concerned the load time of large web applications, focused on one of the biggest users of Polymer: Youtube.
 
-This report contains a description of the full internship, the technical aspects of the task that was given as well as an insight in the way Google can do software engineering on a large scale.
+This report contains an overall impression of the working environment at Google in comparison to my university, a description of the full internship, the technical aspects of the task that was given as well as an insight in the way Google can do software engineering on a large scale.
+
+## Working at Google
+
+During the internship I experienced a different working environment in comparison to the environment at my university, [Delft University of Technology](https://www.tudelft.nl/).
+There is a stark difference between prioritization and assignment of tasks between industry and university life.
+In the 12 weeks, I was tasked to answer a (seemingly) simple question.
+There was no pre-specified set of sub-tasks required to be able to answer this question, this was my own responsibility.
+Of course I had (almost daily) meetings with my host and second reviewer, as well as other team members, who I could discuss approaches and problems with.
+This ad-hoc approach allowed me to work on problems and discuss blocking issues right as I encountered them (or after an hour being stuck on the same issue).
+
+The first 2 weeks consisted of training by top Google engineers in Mountain View, which explained how Google operates and introduces new hires into the Google workflow.
+I was in a special position, as most of the specific workflow was not required knowledge for my internship.
+As the Polymer team is primarily open source, my work was all on GitHub, which I was very familiar as result of my work during my courses.
+Nonetheless, whenever terms were used in discussions with Google engineers, I was able to follow the conversation and understand the concepts they were talking about.
+Besides that, the knowledge I obtained, during courses such as [Software Quality and Testing](http://studiegids.tudelft.nl/a101_displayCourse.do?course_id=34556&SIS_SwitchLang=en) and [Software Engineering Methods](http://studiegids.tudelft.nl/a101_displayCourse.do?course_id=43888&SIS_SwitchLang=en), was crucial to be able to have efficient and constructive discussions with my host and second reviewer.
+
+### Testing at Google
+
+The emphasis on testing is very prevalent at Google.
+Besides work on my project tool, all of my contributions to (open source) projects required existence of tests that either tested the new functionality or were regression tests to make sure bugs were fixed.
+Full Test-Driven-Development (TTD) was not something I had to practice, although I mostly used TDD for debugging bug reports and verify that the issue was resolved.
+
+Google internally runs most of the tests on every change.
+Google uses a [Test Automation Platform (TAP)](https://research.google.com/pubs/pub45861.html) to test changes made by a developer.
+Since there is an average of 1 commit per second in the [single repository](https://research.google.com/pubs/pub45424.html), running all tests on every single change list is infeasible and computationally impossible.
+Instead, tests are only run in specific intervals focusing on running frequently-breaking tests.
+Whenever tests broke, engineers had to do a deep-dive and triage the issue.
+As engineering time is very expensive, Google put(s) a lot of effort into optimizing the triaging workflow.
+
+During my internship, I experienced the debugging experience second-handed, when a team member was triaging a TAP failure.
+The test that broke was in a project not owned by the Polymer team.
+However, as the change list of the team member broke the test, it was their responsibility to figure out the root issue.
+If the root issue can not be found, instead of waiting and continuing the search, the change was rolled back to unblock all other engineers from working.
+Rolling back changes is crucial, as Google operates in this single repository.
+(An example of the importance of rolling back changes was [in response to company-wide outages](https://books.google.nl/books?id=tYrPCwAAQBAJ&lpg=PT227&ots=ixoA81UW7p&dq=google%20rollback%20change%20internal&hl=nl&pg=PT227#v=onepage&q=google%20rollback%20change%20internal&f=false)).
+In my specific example, the engineer and I discussed and reasoned about the test failure.
+Even though we had no experience with the test, nor the complete system, the team member and I were still able to deduce why the test failed.
+Nonetheless, we were unable to fix the issue immediately, so we rolled back the change.
+
+### Work-life balance
+
+On a less technical note, my host and I also worked on my work-life balance.
+During my study, I was used to work 7 days a week.
+On weekdays, I would work starting at 10 AM till 6 PM, eat dinner and sometimes work more between 8 PM and 10PM/1AM.
+My work hours largely depended on the size of my assignments and sometimes because I was excited working on a particular assignment.
+One occurrence I recall was working on the course [Concepts of Programming Languages](http://studiegids.tudelft.nl/a101_displayCourse.do?course_id=43899&SIS_SwitchLang=en) till 1 AM in the morning, as I suddenly had inspiration and was able to solve the assignment (even though the deadline was still days away).
+
+Being used to these working hours, at the start of my internship I had trouble having a healthy work-life balance.
+In the first couple of weeks, I would work hours similar to what I was used to during the university.
+However, most of the Google engineers left at 6 PM, while a couple of team members and I would stick around.
+We had a smallish group of engineers eating dinner every day in the office.
+After dinner, we would go back to continue working in the office.
+
+Roughly in the middle of my internship, my host started a discussion about my work-life balance.
+Implicitly, it was impacting my work performance and I was working less efficiently as I could, but I was not aware of it being that impactful.
+This discussion was tough and trying to change my working hours was hard, but in the last weeks of my internship I did change my day.
+Instead of returning to the office after dinner, I would join colleagues in playing games (pool, pinball, table tennis).
+Even though I reduced the total amount of working hours per day, I was more productive and able to resolve problems faster.
+Learning to manage my work-life balance was very valuable and I think that without working in industry and having peers discussing these problems, it is hard to make sure you are working in a healthy manner.
+
+### Conclusion
+
+All in all, working at Google is not extremely different compared to university life.
+However, priorities and aspects such as a work-life balance are very much different in industry compared to being a student.
+The knowledge I obtained from my university courses were sufficient to be able to have thoughtful conversations with my colleagues.
+However, practical experience outside course assignments and exams is required to be able to effectively write industry code.
+Luckily I could obtain experience with my open source contributions which I did in parallel to my study.
+(The open source contributions to Polymer eventually let the Polymer team to reaching out to me for this internship)
 
 ## Description of real-world project
 
-The most important part of the internship was the real-world project.
+Aside from obtaining experience from working at Google, the most important part of the internship was the real-world project.
 Load time of applications is of great concern for Youtube as well as various other big users of [Polymer](https://www.polymer-project.org/).
 As such, Youtube requested the Polymer team for improvements to their load performance.
 Earlier examples of improved load performance was the introduction of [`lazyRegister`](https://github.com/Polymer/polymer/releases/tag/v1.4.0).
 `lazyRegister` specifically aimed to reduce the amount of registration and setup work Polymer did when registering elements.
-As Youtube is a big application, it built and uses a lot of [custom elements](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Custom_Elements) on every page.
+As Youtube is a big application, it builds and uses a lot of [custom elements](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Custom_Elements) on every page.
 However, not all elements are crucial to be fully available on first load.
 Examples include elements that are in hidden visual components (drop down menus, dialogs, etc...) or are used in only a subset of the various pages.
 Late registration was introduced to only do the necessary registration work once an element was instantiated and thus actually used.
@@ -311,7 +379,7 @@ While CPU time is reduced, the gain is negated by the increased network time for
 Exporting all metadata on Youtube generates 880KB of metadata resulting in 47KB gzipped.
 Applying several optimizations (see appendix for more information) and changes to the Polymer core library, the bundle could be reduced to 364KB.
 Performance tests on desktop showed a marginal difference in network time.
-On mobile with fast wifi, the load time of the file is increased from 159ms to 190ms.
+On mobile with fast wifi, the load time of the file increases from 159ms to 190ms.
 Throttling to fast 3G results in 4,73s and 4,91s respectively.
 Slow 3G results in 16,96s and 17,49s.
 
@@ -426,7 +494,7 @@ The provided data definitively proved that pre-building binding metadata saved 1
 | Mobile | 902ms | 874ms | 28ms |
 
 The serialized metadata for property-effects was big enough to trump the benefit of skipping parsing cost of properties.
-Moreover, the property metadata was still required for other aspects of the Polymer metadata system for for example default values.
+Moreover, the property metadata was still required for other aspects of the Polymer metadata system for, for example, default values.
 Pre-building property metadata would thus be feasible if and only if all property metadata is pre-built.
 We discovered this caveat late in the process and there was not enough time to incorporate these changes in the time scope of the project.
 Section “Further possible improvements” lists all extra opportunities.
