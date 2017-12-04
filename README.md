@@ -17,14 +17,14 @@ This ad-hoc approach allowed me to work on problems and discuss blocking issues 
 
 The first 2 weeks consisted of training by top Google engineers in Mountain View, which explained how Google operates and introduces new hires into the Google workflow.
 I was in a special position, as most of the specific workflow was not required knowledge for my internship.
-As the Polymer team is primarily open source, my work was all on GitHub, which I was very familiar as result of my work during my courses.
+As the Polymer team is primarily open source, my work was all on GitHub, which I was very familiar with as a result of my work during my courses.
 Nonetheless, whenever terms were used in discussions with Google engineers, I was able to follow the conversation and understand the concepts they were talking about.
 Besides that, the knowledge I obtained, during courses such as [Software Quality and Testing](http://studiegids.tudelft.nl/a101_displayCourse.do?course_id=34556&SIS_SwitchLang=en) and [Software Engineering Methods](http://studiegids.tudelft.nl/a101_displayCourse.do?course_id=43888&SIS_SwitchLang=en), was crucial to be able to have efficient and constructive discussions with my host and second reviewer.
 
 ### Testing at Google
 
 The emphasis on testing is very prevalent at Google.
-Besides work on my project tool, all of my contributions to (open source) projects required existence of tests that either tested the new functionality or were regression tests to make sure bugs were fixed.
+Besides work on my project tool, all of my contributions to (open source) projects required the existence of tests that either tested the new functionality or were regression tests to make sure bugs were fixed.
 Full Test-Driven-Development (TTD) was not something I had to practice, although I mostly used TDD for debugging bug reports and verify that the issue was resolved.
 
 Google internally runs most of the tests on every change.
@@ -37,7 +37,7 @@ As engineering time is very expensive, Google put(s) a lot of effort into optimi
 During my internship, I experienced the debugging experience second-handed, when a team member was triaging a TAP failure.
 The test that broke was in a project not owned by the Polymer team.
 However, as the change list of the team member broke the test, it was their responsibility to figure out the root issue.
-If the root issue can not be found, instead of waiting and continuing the search, the change was rolled back to unblock all other engineers from working.
+If the root issue cannot be found, instead of waiting and continuing the search, the change was rolled back to unblock all other engineers from working.
 Rolling back changes is crucial, as Google operates in this single repository.
 (An example of the importance of rolling back changes was [in response to company-wide outages](https://books.google.nl/books?id=tYrPCwAAQBAJ&lpg=PT227&ots=ixoA81UW7p&dq=google%20rollback%20change%20internal&hl=nl&pg=PT227#v=onepage&q=google%20rollback%20change%20internal&f=false)).
 In my specific example, the engineer and I discussed and reasoned about the test failure.
@@ -72,7 +72,7 @@ However, priorities and aspects such as a work-life balance are very much differ
 The knowledge I obtained from my university courses were sufficient to be able to have thoughtful conversations with my colleagues.
 However, practical experience outside course assignments and exams is required to be able to effectively write industry code.
 Luckily I could obtain experience with my open source contributions which I did in parallel to my study.
-(The open source contributions to Polymer eventually let the Polymer team to reaching out to me for this internship)
+(The open source contributions to Polymer eventually led the Polymer team to reach out to me for this internship)
 
 ## Description of real-world project
 
