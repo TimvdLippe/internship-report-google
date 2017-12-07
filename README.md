@@ -503,7 +503,7 @@ The final build that was tested thus exclude property effects and only pre-built
 
 # Conclusion
 Pre-building binding metadata is a performance benefit for loading websites, albeit marginal.
-Depending on the usecase of the website (available bandwidth, CPU speed, mobile vs desktop), pre-buildling binding metadata is advisable.
+Depending on the usecase of the website (available bandwidth, CPU speed, mobile vs desktop), pre-building binding metadata is advisable.
 The developed tool, given the requirements of perfect pre-building, has several gotchas that have to be taken into account when adopting the tool.
 This largely concerns running the actual user code in a browser, without control of external dependencies.
 
