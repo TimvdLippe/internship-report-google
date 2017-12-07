@@ -37,7 +37,7 @@ As engineering time is very expensive, Google put(s) a lot of effort into optimi
 During my internship, I experienced the debugging experience second-handed, when a team member was triaging a TAP failure.
 The test that broke was in a project not owned by the Polymer team.
 However, as the change list of the team member broke the test, it was their responsibility to figure out the root issue.
-If the root issue cannot be found, instead of waiting and continuing the search, the change was rolled back to unblock all other engineers from working.
+If the root issue cannot be found, instead of waiting and continuing the search, the change is rolled back to unblock all other engineers from working.
 Rolling back changes is crucial, as Google operates in this single repository.
 (An example of the importance of rolling back changes was [in response to company-wide outages](https://books.google.nl/books?id=tYrPCwAAQBAJ&lpg=PT227&ots=ixoA81UW7p&dq=google%20rollback%20change%20internal&hl=nl&pg=PT227#v=onepage&q=google%20rollback%20change%20internal&f=false)).
 In my specific example, the engineer and I discussed and reasoned about the test failure.
@@ -47,8 +47,8 @@ Nonetheless, we were unable to fix the issue immediately, so we rolled back the 
 ### Work-life balance
 
 On a less technical note, my host and I also worked on my work-life balance.
-During my study, I was used to work 7 days a week.
-On weekdays, I would work starting at 10 AM till 6 PM, eat dinner and sometimes work more between 8 PM and 10PM/1AM.
+During my study, I was used to working 7 days a week.
+On weekdays, I would  start at 10 AM and work till 6 PM, eat dinner and sometimes work more between 8 PM and 10PM/1AM.
 My work hours largely depended on the size of my assignments and sometimes because I was excited working on a particular assignment.
 One occurrence I recall was working on the course [Concepts of Programming Languages](http://studiegids.tudelft.nl/a101_displayCourse.do?course_id=43899&SIS_SwitchLang=en) till 1 AM in the morning, as I suddenly had inspiration and was able to solve the assignment (even though the deadline was still days away).
 
