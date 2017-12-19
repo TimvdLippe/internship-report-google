@@ -34,7 +34,7 @@ Instead, tests are only run in specific intervals focusing on running frequently
 Whenever tests broke, engineers had to do a deep-dive and triage the issue.
 As engineering time is very expensive, Google put(s) a lot of effort into optimizing the triaging workflow.
 
-During my internship, I experienced the debugging experience second-handed, when a team member was triaging a TAP failure.
+During my internship, I experienced the debugging experience secondhand, when a team member was triaging a TAP failure.
 The test that broke was in a project not owned by the Polymer team.
 However, as the change list of the team member broke the test, it was their responsibility to figure out the root issue.
 If the root issue cannot be found, instead of waiting and continuing the search, the change is rolled back to unblock all other engineers from working.
